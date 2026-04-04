@@ -1,0 +1,58 @@
+import type { SubjectDefinition } from "@/types";
+
+export const SUBJECTS: SubjectDefinition[] = [
+  {
+    id: "math",
+    nameAr: "الرياضيات",
+    icon: "🔢",
+    color: "from-blue-400 to-blue-600",
+    bgLight: "bg-blue-50",
+    description: "الأعداد والعمليات الحسابية",
+    educationalGoal: "تنمية التفكير المنطقي والتحليلي",
+  },
+  {
+    id: "arabic",
+    nameAr: "اللغة العربية",
+    icon: "📖",
+    color: "from-emerald-400 to-emerald-600",
+    bgLight: "bg-emerald-50",
+    description: "القراءة والكتابة والإملاء",
+    educationalGoal: "تعزيز مهارات اللغة الأم",
+  },
+  {
+    id: "science",
+    nameAr: "العلوم",
+    icon: "🔬",
+    color: "from-purple-400 to-purple-600",
+    bgLight: "bg-purple-50",
+    description: "اكتشاف الطبيعة والكون",
+    educationalGoal: "تنمية التفكير العلمي والاستكشافي",
+  },
+  {
+    id: "english",
+    nameAr: "اللغة الإنجليزية",
+    icon: "🌍",
+    color: "from-orange-400 to-orange-600",
+    bgLight: "bg-orange-50",
+    description: "تعلم الإنجليزية بطريقة ممتعة",
+    educationalGoal: "بناء أساس لغوي عالمي",
+  },
+  {
+    id: "art",
+    nameAr: "الفنون",
+    icon: "🎨",
+    color: "from-pink-400 to-pink-600",
+    bgLight: "bg-pink-50",
+    description: "الإبداع والتعبير الفني",
+    educationalGoal: "تطوير الإبداع والخيال",
+  },
+  {
+    id: "quran",
+    nameAr: "التربية الإسلامية",
+    icon: "⭐",
+    color: "from-teal-400 to-teal-600",
+    bgLight: "bg-teal-50",
+    description: "القرآن والأخلاق والقيم",
+    educationalGoal: "تعزيز القيم والأخلاق الإسلامية",
+  },
+];

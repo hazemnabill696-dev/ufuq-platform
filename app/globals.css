@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 100% 98.4%;
+    --foreground: 218 23% 23%;
+    --card: 0 0% 100%;
+    --card-foreground: 218 23% 23%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 218 23% 23%;
+    --primary: 245 100% 69%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 100% 71%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 210 20% 96%;
+    --accent-foreground: 218 23% 23%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 245 100% 69%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-[#F8F9FF] text-ufuq-text font-cairo antialiased;
+  }
+}
+
+/* RTL progress: fill from right */
+[dir="rtl"] .progress-rtl {
+  transform: scaleX(-1);
+}
+
+/* Learning support mode */
+html.learning-support {
+  font-size: 120%;
+}
+
+html.learning-support button,
+html.learning-support a[role="button"],
+html.learning-support [role="button"],
+html.learning-support input,
+html.learning-support select,
+html.learning-support textarea,
+html.learning-support [data-interactive="true"] {
+  outline: 3px solid #6C63FF;
+  outline-offset: 2px;
+}
+
+html.learning-support body {
+  filter: contrast(1.12);
+}
+
+@keyframes ufuq-confetti-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0.3;
+  }
+}
+
+.ufuq-confetti-piece {
+  animation: ufuq-confetti-fall 2.5s ease-out forwards;
+}
+
+@keyframes ufuq-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+.ufuq-shake {
+  animation: ufuq-shake 0.4s ease-in-out;
+}
