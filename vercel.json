@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/ufuq-platform",
+      "permanent": false
+    }
+  ]
+}
