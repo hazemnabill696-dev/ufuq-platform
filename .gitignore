@@ -30,3 +30,9 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Large archives
+*.rar
+*.zip
+*.7z
+
