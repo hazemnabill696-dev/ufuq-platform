@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useGameStore } from "@/store/useGameStore";
 import { computeLevelInfo, deriveAchievementList } from "@/lib/gamification-engine";
 import { SUBJECTS } from "@/lib/subjects";
+import { dashboardNavLabel } from "@/lib/dashboard-nav";
 
 export default function ParentDashboardPage() {
   const subjectPoints = useGameStore((s) => s.subjectPoints);
@@ -29,8 +30,8 @@ export default function ParentDashboardPage() {
   return (
     <div className="space-y-6">
       <header className="space-y-2">
-        <h1 className="text-4xl font-extrabold text-ufuq-text">لوحة ولي الأمر</h1>
-        <p className="text-lg text-ufuq-muted">ملخص التقدم على هذا الجهاز (بيانات الطالب المحلية).</p>
+        <h1 className="text-4xl font-extrabold text-ufuq-text">{dashboardNavLabel("/parent")}</h1>
+        <p className="text-lg text-ufuq-muted">ملخص التقدم على هذا الجهاز (بيانات التعلم المحفوظة محلياً).</p>
       </header>
 
       <div className="grid gap-4 md:grid-cols-3">

@@ -101,7 +101,7 @@ export default function LoginPage() {
           </p>
           {!supabase && (
             <p className="text-center text-xs text-ufuq-muted">
-              لم يتم ضبط Supabase؛ سيتم توجيهك مباشرة إلى لوحة الطالب للتجربة المحلية.
+              لم يتم ضبط Supabase؛ سيتم توجيهك مباشرة إلى صفحة المواد الدراسية للتجربة المحلية.
             </p>
           )}
         </form>

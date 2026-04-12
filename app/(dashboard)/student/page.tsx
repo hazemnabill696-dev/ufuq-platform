@@ -6,6 +6,10 @@ import { useGameStore } from "@/store/useGameStore";
 import { computeLevelInfo } from "@/lib/gamification-engine";
 import { ProgressBar } from "@/components/gamification/ProgressBar";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
+import { HomeQuickNav } from "@/components/home/HomeQuickNav";
+import { IntroVideoSection } from "@/components/home/IntroVideoSection";
+import { STUDENT_SUBJECT_GRID_SECTION_TITLE } from "@/lib/dashboard-nav";
+import { PlayfulBackdrop } from "@/components/decoration/PlayfulBackdrop";
 
 const SubjectGrid = dynamic(
   () => import("@/components/subjects/SubjectGrid").then((m) => ({ default: m.SubjectGrid })),
@@ -34,7 +38,9 @@ export default function StudentHomePage() {
   }, [touchStreak, syncAchievements]);
 
   return (
-    <div className="space-y-8">
+    <div className="relative isolate">
+      <PlayfulBackdrop variant="home" />
+      <div className="relative z-[1] space-y-8">
       <section className="rounded-card border border-border/60 bg-white p-6 shadow-sm">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-3">
@@ -60,15 +66,20 @@ export default function StudentHomePage() {
         </div>
       </section>
 
+      <IntroVideoSection />
+
+      <HomeQuickNav />
+
       <section className="space-y-4">
         <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-extrabold text-ufuq-text">المواد الدراسية</h2>
+            <h2 className="text-3xl font-extrabold text-ufuq-text">{STUDENT_SUBJECT_GRID_SECTION_TITLE}</h2>
             <p className="text-ufuq-muted">اضغط على «ابدأ الآن» لتسجيل تقدمك وكسب النقاط.</p>
           </div>
         </div>
         <SubjectGrid />
       </section>
+      </div>
     </div>
   );
 }

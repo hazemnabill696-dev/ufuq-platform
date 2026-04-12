@@ -98,3 +98,85 @@ html.learning-support body {
 .ufuq-shake {
   animation: ufuq-shake 0.4s ease-in-out;
 }
+
+@keyframes ufuq-achievement-shine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateX(220%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+.ufuq-achievement-shine {
+  animation: ufuq-achievement-shine 3.2s ease-in-out infinite;
+}
+
+@keyframes ufuq-confetti-twinkle {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: translateY(6px) scale(0.92);
+  }
+}
+
+.ufuq-confetti-twinkle {
+  animation: ufuq-confetti-twinkle 1.8s ease-in-out infinite;
+}
+
+@keyframes playful-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.playful-float-9 {
+  animation: playful-float 9s ease-in-out infinite;
+}
+
+.playful-float-12 {
+  animation: playful-float 12s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playful-float-9,
+  .playful-float-12 {
+    animation: none !important;
+  }
+}
+
+@keyframes game-result-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.game-result-pop {
+  animation: game-result-pop 0.45s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game-result-pop {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

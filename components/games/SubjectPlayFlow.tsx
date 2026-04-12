@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useState, type ReactNode } from "react";
+import { PlayfulBackdrop } from "@/components/decoration/PlayfulBackdrop";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GamePicker, type GameMeta } from "@/components/games/GamePicker";
@@ -95,6 +96,15 @@ const TITLES: Record<string, string> = {
   quran: "التربية الإسلامية",
 };
 
+function PlayDecorShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="relative isolate w-full">
+      <PlayfulBackdrop variant="game" />
+      <div className="relative z-[1] w-full">{children}</div>
+    </div>
+  );
+}
+
 export function SubjectPlayFlow({ subjectId }: { subjectId: string }) {
   const [gameId, setGameId] = useState<string | null>(null);
   const [pickerNonce, setPickerNonce] = useState(0);
@@ -106,11 +116,16 @@ export function SubjectPlayFlow({ subjectId }: { subjectId: string }) {
   }, []);
 
   if (!cfg) {
-    return <ComingSoon name={TITLES[subjectId] ?? "المادة"} />;
+    return (
+      <PlayDecorShell>
+        <ComingSoon name={TITLES[subjectId] ?? "المادة"} />
+      </PlayDecorShell>
+    );
   }
 
+  let body: ReactNode;
   if (!gameId) {
-    return (
+    body = (
       <GamePicker
         key={pickerNonce}
         subjectId={subjectId}
@@ -119,28 +134,39 @@ export function SubjectPlayFlow({ subjectId }: { subjectId: string }) {
         onSelect={setGameId}
       />
     );
+  } else {
+    switch (gameId) {
+      case "math-number-challenge":
+        body = <NumberChallengeGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "math-number-order":
+        body = <NumberOrderingGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "math-ops-match":
+        body = <OperationsMatchGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "arabic-complete-word":
+        body = <CompleteWordGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "arabic-arrange-sentence":
+        body = <ArrangeSentenceGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "arabic-smart-dictation":
+        body = <SmartDictationGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "science-classify":
+        body = <ClassifyLivingGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "science-water-cycle":
+        body = <WaterCycleGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      case "science-quiz":
+        body = <ScienceQuizGame subjectId={subjectId} onBack={onBackToPicker} />;
+        break;
+      default:
+        body = <ComingSoon name={cfg.title} />;
+    }
   }
 
-  switch (gameId) {
-    case "math-number-challenge":
-      return <NumberChallengeGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "math-number-order":
-      return <NumberOrderingGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "math-ops-match":
-      return <OperationsMatchGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "arabic-complete-word":
-      return <CompleteWordGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "arabic-arrange-sentence":
-      return <ArrangeSentenceGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "arabic-smart-dictation":
-      return <SmartDictationGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "science-classify":
-      return <ClassifyLivingGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "science-water-cycle":
-      return <WaterCycleGame subjectId={subjectId} onBack={onBackToPicker} />;
-    case "science-quiz":
-      return <ScienceQuizGame subjectId={subjectId} onBack={onBackToPicker} />;
-    default:
-      return <ComingSoon name={cfg.title} />;
-  }
+  return <PlayDecorShell>{body}</PlayDecorShell>;
 }

@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useState } from "react";
 import { GameWrapper, useFinishGame } from "@/components/games/GameWrapper";
+import { playAnswerCorrectSound, playAnswerWrongSound } from "@/lib/game-sounds";
 
 type Q = {
   a: number;
@@ -63,6 +64,7 @@ function Inner() {
     (val: number) => {
       if (showCorrect !== null) return;
       if (val === q.answer) {
+        playAnswerCorrectSound();
         setFlashOk(true);
         const nextCorrect = correct + 1;
         setCorrect(nextCorrect);
@@ -77,6 +79,7 @@ function Inner() {
           }
         }, 450);
       } else {
+        playAnswerWrongSound();
         setShake(true);
         setShowCorrect(q.answer);
         setTimeout(() => {
@@ -99,9 +102,14 @@ function Inner() {
     <div
       className={`space-y-6 transition-colors duration-300 ${flashOk ? "bg-success/10" : ""} ${shake ? "ufuq-shake" : ""}`}
     >
-      <p className="text-right text-2xl font-bold md:text-3xl">
-        السؤال {i + 1} من 10
-      </p>
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+        <p className="text-right text-2xl font-bold md:text-3xl">
+          السؤال {i + 1} من 10
+        </p>
+        <p className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-center text-base font-extrabold text-primary tabular-nums">
+          النقاط: {correct * 10} · صحيح {correct}/10
+        </p>
+      </div>
       <p className="text-center font-mono text-3xl font-extrabold text-primary md:text-4xl" dir="ltr">
         {q.label}
       </p>

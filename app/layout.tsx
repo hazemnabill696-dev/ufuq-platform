@@ -13,7 +13,7 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   title: "أُفُق | منصة تعليمية للأطفال",
-  description: "تعلم، العب، وتقدم عبر مواد دراسية ممتعة للأطفال والمعلمين والأهل.",
+  description: "تعلم، العب، وتقدم عبر مواد دراسية ممتعة للأطفال وللعاملين في التدريس وللأهل.",
 };
 
 export default function RootLayout({

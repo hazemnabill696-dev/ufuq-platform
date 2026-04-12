@@ -5,12 +5,13 @@ import { Presentation, Users, BookOpen } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SUBJECTS } from "@/lib/subjects";
+import { dashboardNavLabel } from "@/lib/dashboard-nav";
 
 export default function TeacherDashboardPage() {
   return (
     <div className="space-y-6">
       <header className="space-y-2">
-        <h1 className="text-4xl font-extrabold text-ufuq-text">وضع الفصل</h1>
+        <h1 className="text-4xl font-extrabold text-ufuq-text">{dashboardNavLabel("/teacher")}</h1>
         <p className="text-lg text-ufuq-muted">اختصارات سريعة لبدء الحصة مع الطلاب.</p>
       </header>
 
@@ -22,10 +23,10 @@ export default function TeacherDashboardPage() {
           </CardHeader>
           <CardContent className="space-y-3">
             <p className="text-sm text-ufuq-muted">
-              افتح لوحة الطالب على الشاشة الكبيرة لمشاركة الشبكة والأنشطة.
+              افتح صفحة المواد الدراسية على الشاشة الكبيرة لمشاركة الشبكة والأنشطة.
             </p>
             <Button asChild className="w-full" data-interactive="true">
-              <Link href="/student">فتح واجهة الطالب</Link>
+              <Link href="/student">فتح المواد الدراسية</Link>
             </Button>
           </CardContent>
         </Card>
