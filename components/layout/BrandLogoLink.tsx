@@ -19,8 +19,8 @@ export function BrandLogoLink({ className, showWordmark = true }: BrandLogoLinkP
     >
       <span className="relative block h-9 w-9 shrink-0 sm:h-10 sm:w-10" aria-hidden>
         <Image
-          src={`${BASE_PATH}/images/logo.svg`}
-          alt=""
+src={`${BASE_PATH}/images/logo.png`}
+          alt="أُفُق logo"
           fill
           className="object-contain"
           sizes="40px"
